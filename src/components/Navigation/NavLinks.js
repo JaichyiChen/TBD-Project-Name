@@ -11,7 +11,7 @@ const NavLinks = (props) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/1234/places"> My Places</NavLink>
+        <NavLink to={`/123123/places`}> My Places</NavLink>
       </li>
       <li>
         <NavLink to="/places/new"> Add Place</NavLink>

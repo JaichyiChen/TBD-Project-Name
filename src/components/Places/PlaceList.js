@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../UIElements/Card";
 import PlaceItem from "./PlaceItem";
 import "./PlaceList.css";
+import Button from "../FormElements/Button";
 const PlaceList = (props) => {
   const style = {
     padding: "2rem",
@@ -11,7 +12,7 @@ const PlaceList = (props) => {
       <div className="place-list center">
         <Card style={style}>
           <h2>No Places Found.</h2>
-          <button> share a place</button>
+          <Button to="/places/new"> share a place</Button>
         </Card>
       </div>
     );

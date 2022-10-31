@@ -5,9 +5,12 @@ import Card from "./UIElements/Card";
 import { Link } from "react-router-dom";
 const UserItem = (props) => {
   const { id, image, placeCount, name } = props;
+  const cardStyle = {
+    padding: "0",
+  };
   return (
     <li className="user-item">
-      <Card className="user-item__content">
+      <Card className="user-item__content" style={cardStyle}>
         <Link to={`/${id}/places`}>
           <div className="user-item__image">
             <Avatar image={image} alt={name}></Avatar>

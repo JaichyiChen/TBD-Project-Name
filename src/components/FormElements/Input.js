@@ -30,12 +30,14 @@ const Input = (props) => {
     rows,
     onInput,
     errorMessage,
+    initialValue,
+    initialValid,
   } = props;
   //initial state
   const [state, dispatch] = useReducer(reducer, {
-    value: "",
+    value: initialValue || "",
     isFocused: false,
-    isValid: false,
+    isValid: initialValid || false,
   });
 
   useEffect(() => {

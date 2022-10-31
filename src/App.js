@@ -4,6 +4,7 @@ import Users from "./pages/Users";
 import NewPlace from "./pages/NewPlace";
 import UserPlaces from "./pages/UserPlaces";
 import Navigation from "./components/Navigation/Navigation";
+import UpdatePlace from "./pages/UpdatePlace";
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,10 @@ const App = () => {
           <Route
             path="/:userId/places"
             element={<UserPlaces></UserPlaces>}
+          ></Route>
+          <Route
+            path="/places/:placeId"
+            element={<UpdatePlace></UpdatePlace>}
           ></Route>
           <Route path="*" element={<Navigate to="/"></Navigate>}></Route>
         </Routes>

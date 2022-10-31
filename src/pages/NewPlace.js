@@ -1,38 +1,13 @@
 import React, { useCallback, useReducer } from "react";
-import "./Newplace.css";
+import "./PlaceForm.css";
 import Input from "../components/FormElements/Input";
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../Utils/validators";
 import Button from "../components/FormElements/Button";
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "INPUT_CHANGE":
-      let formIsValid = true;
-      //updating formIsValid based on the input that is being changed
-      for (const inputId in state.inputs) {
-        if (inputId === action.InputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      //update the state in NewPlace based on the state in Input.js
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      };
-    default:
-      return state;
-  }
-};
+import { useForm } from "../hooks/formHooks";
 
-//useCallback to prevent infinite rerender, this function is used as dependency in input.js
 const NewPlace = () => {
-  const [state, dispatch] = useReducer(formReducer, {
-    inputs: {
+  const [state, inputHandler] = useForm(
+    {
       title: {
         value: "",
         isValid: false,
@@ -41,17 +16,13 @@ const NewPlace = () => {
         value: "",
         isValid: false,
       },
+      address: {
+        value: "",
+        isValid: false,
+      },
     },
-    isValid: false,
-  });
-  const inputHandler = useCallback((id, value, isValid) => {
-    dispatch({
-      type: "INPUT_CHANGE",
-      value: value,
-      isValid: isValid,
-      inputId: id,
-    });
-  }, []);
+    false
+  );
 
   const submitHandler = (e) => {
     e.preventDefault();
